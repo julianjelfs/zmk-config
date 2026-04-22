@@ -1,0 +1,4 @@
+.venv/
+.zmk-workspace/
+firmware/
+
