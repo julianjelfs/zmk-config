@@ -156,7 +156,7 @@
             &trans         &trans         &kp VOLD       &kp VOLU       &trans             &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &kp DQT
         //├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤   ├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
         //│ |            │              │              │              │              │   │ PREV         │ PLAY         │ NEXT         │              │ ~            │
-            &kp PIPE2      &trans         &trans         &trans         &trans             &kp K_PREV     &kp K_PP       &kp K_NEXT     &trans         &kp TILDE2
+            &kp PIPE2      &trans         &trans         &trans         &trans             &kp C_PREV     &kp C_PP       &kp C_NEXT     &trans         &kp TILDE2
         //╰──────────────┴──────────────┴──────────────┼──────────────┼──────────────┤   ├──────────────┼──────────────┼──────────────┴──────────────┴──────────────╯
         //                                             │              │              │   │              │              │
                                                          &trans         &trans             &trans         &trans
