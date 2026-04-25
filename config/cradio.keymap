@@ -20,6 +20,10 @@
 #define DEL_CTL &hml LCTRL DEL
 #define ENTER_GUI &hmr RGUI ENTER
 #define SPACE_CTL &hmr RCTRL SPACE
+#define BTPRV &bt BT_PRV
+#define BTNXT &bt BT_NXT
+#define BTCLR &bt BT_CLR
+#define BT0 &bt BT_SEL 0
 
 / {
     behaviors {
@@ -163,11 +167,11 @@
         three_layer {
             bindings = <
         //╭──────────────┬──────────────┬──────────────┬──────────────┬──────────────╮   ╭──────────────┬──────────────┬──────────────┬──────────────┬──────────────╮
-        //│              │ F1           │ F2           │ F3           │              │   │              │ F10          │ F11          │ F12          │              │
-            &trans         &kp F1         &kp F2         &kp F3         &trans             &trans         &kp F10        &kp F11        &kp F12        &trans
+        //│ BT PRV       │ F1           │ F2           │ F3           │              │   │ BT NXT       │ F10          │ F11          │ F12          │              │
+            BTPRV          &kp F1         &kp F2         &kp F3         &trans             BTNXT          &kp F10        &kp F11        &kp F12        &trans
         //├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤   ├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
-        //│              │ F4           │ F5           │ F6           │              │   │              │ F13          │ F14          │ F15          │              │
-            &trans         &kp F4         &kp F5         &kp F6         &trans             &trans         &kp F13        &kp F14        &kp F15        &trans
+        //│ BT CLR       │ F4           │ F5           │ F6           │              │   │ BT 0         │ F13          │ F14          │ F15          │              │
+            BTCLR          &kp F4         &kp F5         &kp F6         &trans             BT0            &kp F13        &kp F14        &kp F15        &trans
         //├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤   ├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
         //│              │ F7           │ F8           │ F9           │              │   │              │ F16          │ F17          │ F18          │              │
             &trans         &kp F7         &kp F8         &kp F9         &trans             &trans         &kp F16        &kp F17        &kp F18        &trans
