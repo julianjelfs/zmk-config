@@ -15,7 +15,7 @@
 #define J_SFT &jht RSHFT 0
 #define K_L1 &ltr 1 K
 #define L_L2 &ltr 2 L
-#define SC_ALT &hmr RALT SEMI
+#define QT_ALT &hmr RALT SQT
 #define BSPC_GUI &hml LGUI BSPC
 #define DEL_CTL &hml LCTRL DEL
 #define ENTER_GUI &hmr RGUI ENTER
@@ -116,8 +116,8 @@
         //│ Q            │ W            │ E            │ R            │ T            │   │ Y            │ U            │ I            │ O            │ P            │
             &kp Q          &kp W          &kp E          &kp R          &kp T              &kp Y          &kp U          &kp I          &kp O          &kp P
         //├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤   ├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
-        //│ A            │ S            │ D            │ F            │ G            │   │ H            │ J            │ K            │ L            │ ;            │
-            A_ALT          S_L2           D_L1           F_SFT          &lt 3 G            &lt 3 H        J_SFT          K_L1           L_L2           SC_ALT
+        //│ A            │ S            │ D            │ F            │ G            │   │ H            │ J            │ K            │ L            │ '            │
+            A_ALT          S_L2           D_L1           F_SFT          &lt 3 G            &lt 3 H        J_SFT          K_L1           L_L2           QT_ALT
         //├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤   ├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
         //│ Z            │ X            │ C            │ V            │ B            │   │ N            │ M            │ , <          │ . >          │ / ?          │
             &kp Z          &kp X          &kp C          &kp V          &kp B              &kp N          &kp M          &kp COMMA      &kp DOT        &kp FSLH
@@ -134,8 +134,8 @@
         //│ C-`          │              │ {            │ }            │ -            │   │              │ 7            │ 8            │ 9            │ =            │
             &kp LC(GRAVE)  &trans         &kp LBRC       &kp RBRC       &kp MINUS          &trans         &kp N7         &kp N8         &kp N9         &kp EQUAL
         //├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤   ├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
-        //│ G-`          │              │ [            │ ]            │ _            │   │ CAPS         │ 4            │ 5            │ 6            │ '            │
-            &kp LG(GRAVE)  &trans         &kp LBKT       &kp RBKT       &kp UNDER          &kp CAPS       &kp N4         &kp N5         &kp N6         &kp SQT
+        //│ G-`          │              │ [            │ ]            │ _            │   │ CAPS         │ 4            │ 5            │ 6            │ ;            │
+            &kp LG(GRAVE)  &trans         &kp LBKT       &kp RBKT       &kp UNDER          &kp CAPS       &kp N4         &kp N5         &kp N6         &kp SEMI
         //├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤   ├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
         //│ \ |          │              │ (            │ )            │              │   │ `            │ 1            │ 2            │ 3            │ # ~          │
             &kp NUBS       &trans         &kp LPAR       &kp RPAR       &trans             &kp GRAVE      &kp N1         &kp N2         &kp N3         &kp NUHS
