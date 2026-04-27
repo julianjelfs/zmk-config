@@ -12,6 +12,7 @@
 #define S_L2 &ltl 2 S
 #define D_L1 &ltl 1 D
 #define F_SFT &hml LSHFT F
+#define RBKT_SFT &hml LSHFT RBKT
 #define J_SFT &jht RSHFT 0
 #define K_L1 &ltr 1 K
 #define L_L2 &ltr 2 L
@@ -33,7 +34,7 @@
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <220>;
-            quick-tap-ms = <150>;
+            quick-tap-ms = <200>;
             require-prior-idle-ms = <100>;
             hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 32 33>;
             bindings = <&kp>, <&kp>;
@@ -44,7 +45,7 @@
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <220>;
-            quick-tap-ms = <150>;
+            quick-tap-ms = <200>;
             require-prior-idle-ms = <100>;
             hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31>;
             bindings = <&kp>, <&kp>;
@@ -55,7 +56,7 @@
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <220>;
-            quick-tap-ms = <150>;
+            quick-tap-ms = <200>;
             require-prior-idle-ms = <100>;
             hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 32 33>;
             bindings = <&mo>, <&kp>;
@@ -66,7 +67,7 @@
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <220>;
-            quick-tap-ms = <150>;
+            quick-tap-ms = <200>;
             require-prior-idle-ms = <100>;
             hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31>;
             bindings = <&mo>, <&kp>;
@@ -85,7 +86,7 @@
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <220>;
-            quick-tap-ms = <150>;
+            quick-tap-ms = <200>;
             require-prior-idle-ms = <100>;
             hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31>;
             bindings = <&kp>, <&jtab>;
@@ -135,7 +136,7 @@
             &kp LC(GRAVE)  &trans         &kp LBRC       &kp RBRC       &kp MINUS          &trans         &kp N7         &kp N8         &kp N9         &kp EQUAL
         //├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤   ├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
         //│ G-`          │              │ [            │ ]            │ _            │   │ CAPS         │ 4            │ 5            │ 6            │ ;            │
-            &kp LG(GRAVE)  &trans         &kp LBKT       &kp RBKT       &kp UNDER          &kp CAPS       &kp N4         &kp N5         &kp N6         &kp SEMI
+            &kp LG(GRAVE)  &trans         &kp LBKT       RBKT_SFT       &kp UNDER          &kp CAPS       &kp N4         &kp N5         &kp N6         &kp SEMI
         //├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤   ├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
         //│ \ |          │              │ (            │ )            │              │   │ `            │ 1            │ 2            │ 3            │ # ~          │
             &kp NUBS       &trans         &kp LPAR       &kp RPAR       &trans             &kp GRAVE      &kp N1         &kp N2         &kp N3         &kp NUHS
