@@ -77,8 +77,8 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp J>, <&kp TAB>;
-            mods = <(MOD_LGUI|MOD_RGUI)>;
-            keep-mods = <(MOD_LGUI|MOD_RGUI)>;
+            mods = <(MOD_LGUI|MOD_RGUI|MOD_LCTL|MOD_RCTL)>;
+            keep-mods = <(MOD_LGUI|MOD_RGUI|MOD_LCTL|MOD_RCTL)>;
         };
 
         jht: j_hold_tap {
