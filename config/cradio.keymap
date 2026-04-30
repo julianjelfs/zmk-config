@@ -26,6 +26,8 @@
 #define BTNXT &bt BT_NXT
 #define BTCLR &bt BT_CLR
 #define BT0 &bt BT_SEL 0
+#define BT1 &bt BT_SEL 1
+#define BTDISC0 &bt BT_DISC 0
 
 / {
     behaviors {
@@ -194,8 +196,8 @@
         //│ BT CLR       │ F4           │ F5           │ F6           │              │   │ BT 0         │ F13          │ F14          │ F15          │              │
             BTCLR          &kp F4         &kp F5         &kp F6         &trans             BT0            &kp F13        &kp F14        &kp F15        &trans
         //├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤   ├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
-        //│              │ F7           │ F8           │ F9           │              │   │              │ F16          │ F17          │ F18          │              │
-            &trans         &kp F7         &kp F8         &kp F9         &trans             &trans         &kp F16        &kp F17        &kp F18        &trans
+        //│ DISC 0       │ F7           │ F8           │ F9           │              │   │ BT 1         │ F16          │ F17          │ F18          │              │
+            BTDISC0        &kp F7         &kp F8         &kp F9         &trans             BT1            &kp F16        &kp F17        &kp F18        &trans
         //╰──────────────┴──────────────┴──────────────┼──────────────┼──────────────┤   ├──────────────┼──────────────┼──────────────┴──────────────┴──────────────╯
         //                                             │              │              │   │              │              │
                                                          &trans         &trans             &trans         &trans

@@ -14,7 +14,7 @@ force_update=0
 
 usage() {
   cat <<'EOF'
-Usage: scripts/build-zmk.sh [all|left|right] [--update]
+Usage: scripts/build-zmk.sh [all|left|right|left-log|right-log|reset] [--update]
 
 Build local ZMK firmware for this config repo.
 
@@ -22,6 +22,9 @@ Options:
   all       Build both halves (default)
   left      Build the left half only
   right     Build the right half only
+  left-log  Build the left half with USB logging enabled
+  right-log Build the right half with USB logging enabled
+  reset     Build the settings-reset firmware
   --update  Refresh west modules before building
 EOF
 }
@@ -33,7 +36,7 @@ parse_args() {
       all)
         positional=("all")
         ;;
-      left|right)
+      left|right|left-log|right-log|reset)
         positional+=("$1")
         ;;
       --update)
@@ -125,10 +128,40 @@ setup_workspace() {
 
 build_target() {
   local side="$1"
-  local shield="cradio_${side}"
+  local shield
   local build_dir="${workspace_dir}/build/${side}"
-  local output_file="${output_dir}/${shield}-${board}.uf2"
+  local output_file
+  local snippet_args=()
+  local extra_cmake_args=()
+  local west_build_args
   local arm_gcc toolchain_bin toolchain_root binutils_bin
+
+  case "${side}" in
+    left|right)
+      shield="cradio_${side}"
+      output_file="${output_dir}/${shield}-${board}.uf2"
+      ;;
+    left-log)
+      shield="cradio_left"
+      snippet_args=(-S zmk-usb-logging)
+      extra_cmake_args=(-DEXTRA_CONF_FILE="${config_work_dir}/usb-logging.conf")
+      output_file="${output_dir}/${shield}-${board}-logging.uf2"
+      ;;
+    right-log)
+      shield="cradio_right"
+      snippet_args=(-S zmk-usb-logging)
+      extra_cmake_args=(-DEXTRA_CONF_FILE="${config_work_dir}/usb-logging.conf")
+      output_file="${output_dir}/${shield}-${board}-logging.uf2"
+      ;;
+    reset)
+      shield="settings_reset"
+      output_file="${output_dir}/${shield}-${board}.uf2"
+      ;;
+    *)
+      echo "Unknown build target: ${side}" >&2
+      exit 1
+      ;;
+  esac
 
   arm_gcc="$(find_arm_gcc)"
   toolchain_bin="$(dirname "${arm_gcc}")"
@@ -141,6 +174,24 @@ build_target() {
   fi
 
   mkdir -p "${output_dir}"
+  west_build_args=(
+    -p always
+    -s zmk/app
+    -d "${build_dir}"
+    -b "${board}"
+  )
+  if ((${#snippet_args[@]})); then
+    west_build_args+=("${snippet_args[@]}")
+  fi
+  west_build_args+=(
+    --
+    -DZMK_CONFIG="${config_work_dir}"
+    -DZMK_EXTRA_MODULES="${repo_root}"
+  )
+  if ((${#extra_cmake_args[@]})); then
+    west_build_args+=("${extra_cmake_args[@]}")
+  fi
+  west_build_args+=(-DSHIELD="${shield}")
 
   (
     cd "${workspace_dir}"
@@ -150,11 +201,7 @@ build_target() {
     fi
     export ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb
     export GNUARMEMB_TOOLCHAIN_PATH="${toolchain_root}"
-    ZMK_EXTRA_MODULES="${repo_root}" \
-      "${venv_dir}/bin/west" build -p always -s zmk/app -d "${build_dir}" -b "${board}" -- \
-      -DZMK_CONFIG="${config_work_dir}" \
-      -DZMK_EXTRA_MODULES="${repo_root}" \
-      -DSHIELD="${shield}"
+    ZMK_EXTRA_MODULES="${repo_root}" "${venv_dir}/bin/west" build "${west_build_args[@]}"
   )
 
   cp "${build_dir}/zephyr/zmk.uf2" "${output_file}"

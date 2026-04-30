@@ -5,8 +5,9 @@ Personal ZMK config for a wireless Cradio using `nice_nano_v2` controllers.
 ## Layout files
 
 - `config/cradio.keymap` - main key layout
-- `config/cradio.conf` - extra Kconfig settings (currently empty)
-- `build.yaml` - GitHub Actions build matrix for left/right halves
+- `config/cradio.conf` - extra Kconfig settings, including Bluetooth stability tweaks
+- `build.yaml` - GitHub Actions build matrix for left/right halves plus reset firmware
+- `bluetooth.md` - Bluetooth reconnect, re-pair, and reset instructions
 
 ## Local build
 
@@ -26,6 +27,12 @@ Build a single half:
 ./scripts/build-zmk.sh right
 ```
 
+Build the settings reset firmware:
+
+```sh
+./scripts/build-zmk.sh reset
+```
+
 Refresh the cached ZMK/Zephyr workspace first:
 
 ```sh
@@ -36,6 +43,7 @@ Build outputs are written to:
 
 - `firmware/cradio_left-nice_nano_v2.uf2`
 - `firmware/cradio_right-nice_nano_v2.uf2`
+- `firmware/settings_reset-nice_nano_v2.uf2`
 
 ## Flashing
 
@@ -44,24 +52,9 @@ Build outputs are written to:
 3. Flash `cradio_left-nice_nano_v2.uf2` to the left half.
 4. Flash `cradio_right-nice_nano_v2.uf2` to the right half.
 
-## Bluetooth recovery
+## Bluetooth
 
-Layer 3 includes a few Bluetooth management bindings for recovering from stuck or stale bonds:
-
-| Key | Action |
-| --- | --- |
-| `BT PRV` | Select previous Bluetooth profile |
-| `BT NXT` | Select next Bluetooth profile |
-| `BT CLR` | Clear bond for currently selected profile |
-| `BT 0` | Select Bluetooth profile 0 |
-
-Typical recovery flow:
-
-1. Switch to layer 3.
-2. Press `BT 0`.
-3. Press `BT CLR` if you want to wipe the current bond.
-4. Forget the keyboard in macOS Bluetooth settings.
-5. Pair the keyboard again.
+Bluetooth reconnect, re-pair, and full reset instructions now live in [`bluetooth.md`](./bluetooth.md).
 
 ## Local tooling
 
